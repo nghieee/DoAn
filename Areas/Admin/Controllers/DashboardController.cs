@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace DoAn.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class DashboardController : Controller
     {
-        // GET: Admin/Home
+        // GET: Admin/Dashboard
         public ActionResult Index()
         {
             return View();

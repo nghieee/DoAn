@@ -1,4 +1,4 @@
-﻿
+﻿@model List<DoAn.Models.Product>
 @{
     ViewBag.Title = "LỊCH 2024";
     Layout = "~/Views/Shared/MasterLayout.cshtml";
@@ -14,6 +14,8 @@
     <script src="https://kit.fontawesome.com/eaf1554704.js" crossorigin="anonymous"></script>
 </head>
 <body>
+@foreach (var item in Model)
+{
     <main>
         <div class="main-content">
             <div class="container collection-block">
@@ -172,7 +174,7 @@
                                 <div class="product-block">
                                     <div class="product-img">
                                         <a class="img-resize"
-                                           title="Bìa Lò Xo Giữa Gắn Bloc"
+                                           title="@item.Product_Name"
                                            href="#">
                                             <img src="~/AppData/Img/ForHome/bloc_ca_chep_fbdb5d0d8b244991899fee5df642fdbb_grande.png" />
                                         </a>
@@ -180,8 +182,8 @@
                                     <div class="product-detail">
                                         <h3 class="product-name">
                                             <a href="#"
-                                               title="Bìa Lò Xo Giữa Gắn Bloc">
-                                                Bìa Lò Xo Giữa Gắn Bloc
+                                               title="@item.Product_Name">
+                                                @item.Product_Name
                                             </a>
                                         </h3>
                                         <div class="product-prices">
@@ -1041,6 +1043,7 @@
             </div>
         </div>
     </main>
+} 
 </body>
 </html>
 

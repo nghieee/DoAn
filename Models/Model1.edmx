@@ -1,0 +1,651 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbNhanvanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_Email" />
+          </Key>
+          <Property Name="Admin_Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Admin_Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Admin_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Admin_Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Admin_Image" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Author_ID" />
+          </Key>
+          <Property Name="Author_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Author_Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Product_NewPrice" Type="float" />
+          <Property Name="Product_OldPrice" Type="float" />
+          <Property Name="Product_Discout" Type="nvarchar" MaxLength="50" />
+          <Property Name="Product_Image" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="ProDe_ID" />
+          </Key>
+          <Property Name="ProDe_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProDe_SKU" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProDe_Quantity" Type="int" />
+          <Property Name="ProDe_Detail" Type="nvarchar(max)" />
+          <Property Name="ProDe_Status" Type="bit" />
+          <Property Name="ProDe_Image" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProDe_SoldCount" Type="int" />
+          <Property Name="ProDe_CateID" Type="int" />
+          <Property Name="ProDe_SupplierID" Type="int" />
+          <Property Name="ProDe_AuthorID" Type="int" />
+          <Property Name="ProDe_PublisherID" Type="int" />
+          <Property Name="ProDe_VoucherID" Type="int" />
+          <Property Name="ProDe_YearOfPublish" Type="nvarchar" MaxLength="4" />
+          <Property Name="ProDe_Language" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProDe_Weight" Type="int" />
+          <Property Name="ProDe_Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProDe_NumOfPage" Type="int" />
+          <Property Name="ProDe_Form" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProDe_ProductID" Type="int" />
+          <Property Name="ProDe_TranslatorID" Type="int" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="Publisher_ID" />
+          </Key>
+          <Property Name="Publisher_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Publisher_Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Supplier_ID" />
+          </Key>
+          <Property Name="Supplier_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Supplier_Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Supplier_Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="Supplier_Phone" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Translator">
+          <Key>
+            <PropertyRef Name="Translator_ID" />
+          </Key>
+          <Property Name="Translator_ID" Type="int" Nullable="false" />
+          <Property Name="Translator_Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="Voucher_ID" />
+          </Key>
+          <Property Name="Voucher_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Voucher_Name" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_ProductDetail_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Author_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Publisher">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="Publisher_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Translator">
+          <End Role="Translator" Type="Self.Translator" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translator">
+              <PropertyRef Name="Translator_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_TranslatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Voucher">
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="Voucher_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_VoucherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="dbNhanvanModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductDetail" EntityType="Self.ProductDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publisher" EntityType="Self.Publisher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Translator" EntityType="Self.Translator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ProductDetail_Author" Association="Self.FK_ProductDetail_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Product" Association="Self.FK_ProductDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Publisher" Association="Self.FK_ProductDetail_Publisher">
+            <End Role="Publisher" EntitySet="Publisher" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Supplier" Association="Self.FK_ProductDetail_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Translator" Association="Self.FK_ProductDetail_Translator">
+            <End Role="Translator" EntitySet="Translator" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Voucher" Association="Self.FK_ProductDetail_Voucher">
+            <End Role="Voucher" EntitySet="Voucher" />
+            <End Role="ProductDetail" EntitySet="ProductDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbNhanvanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Author_ID" />
+          </Key>
+          <Property Name="Author_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Author_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductDetails" Relationship="Self.FK_ProductDetail_Author" FromRole="Author" ToRole="ProductDetail" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Product_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Product_NewPrice" Type="Double" />
+          <Property Name="Product_OldPrice" Type="Double" />
+          <Property Name="Product_Discout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductDetails" Relationship="Self.FK_ProductDetail_Product" FromRole="Product" ToRole="ProductDetail" />
+          <Property Name="Product_Image" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductDetail">
+          <Key>
+            <PropertyRef Name="ProDe_ID" />
+          </Key>
+          <Property Name="ProDe_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProDe_SKU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProDe_Quantity" Type="Int32" />
+          <Property Name="ProDe_Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProDe_Status" Type="Boolean" />
+          <Property Name="ProDe_Image" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ProDe_SoldCount" Type="Int32" />
+          <Property Name="ProDe_CateID" Type="Int32" />
+          <Property Name="ProDe_SupplierID" Type="Int32" />
+          <Property Name="ProDe_AuthorID" Type="Int32" />
+          <Property Name="ProDe_PublisherID" Type="Int32" />
+          <Property Name="ProDe_VoucherID" Type="Int32" />
+          <Property Name="ProDe_YearOfPublish" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ProDe_Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProDe_Weight" Type="Int32" />
+          <Property Name="ProDe_Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProDe_NumOfPage" Type="Int32" />
+          <Property Name="ProDe_Form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProDe_ProductID" Type="Int32" />
+          <NavigationProperty Name="Author" Relationship="Self.FK_ProductDetail_Author" FromRole="ProductDetail" ToRole="Author" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductDetail_Product" FromRole="ProductDetail" ToRole="Product" />
+          <NavigationProperty Name="Publisher" Relationship="Self.FK_ProductDetail_Publisher" FromRole="ProductDetail" ToRole="Publisher" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_ProductDetail_Supplier" FromRole="ProductDetail" ToRole="Supplier" />
+          <NavigationProperty Name="Voucher" Relationship="Self.FK_ProductDetail_Voucher" FromRole="ProductDetail" ToRole="Voucher" />
+          <Property Name="ProDe_TranslatorID" Type="Int32" />
+          <NavigationProperty Name="Translator" Relationship="dbNhanvanModel.FK_ProductDetail_Translator" FromRole="ProductDetail" ToRole="Translator" />
+        </EntityType>
+        <EntityType Name="Publisher">
+          <Key>
+            <PropertyRef Name="Publisher_ID" />
+          </Key>
+          <Property Name="Publisher_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Publisher_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductDetails" Relationship="Self.FK_ProductDetail_Publisher" FromRole="Publisher" ToRole="ProductDetail" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Supplier_ID" />
+          </Key>
+          <Property Name="Supplier_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Supplier_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Supplier_Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Supplier_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductDetails" Relationship="Self.FK_ProductDetail_Supplier" FromRole="Supplier" ToRole="ProductDetail" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="Voucher_ID" />
+          </Key>
+          <Property Name="Voucher_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Voucher_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductDetails" Relationship="Self.FK_ProductDetail_Voucher" FromRole="Voucher" ToRole="ProductDetail" />
+        </EntityType>
+        <Association Name="FK_ProductDetail_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="Author_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Product_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Publisher">
+          <End Role="Publisher" Type="Self.Publisher" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publisher">
+              <PropertyRef Name="Publisher_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Supplier_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_PublisherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDetail_Voucher">
+          <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1" />
+          <End Role="ProductDetail" Type="Self.ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voucher">
+              <PropertyRef Name="Voucher_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_VoucherID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbNhanvanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="Self.Author" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductDetails" EntityType="Self.ProductDetail" />
+          <EntitySet Name="Publishers" EntityType="Self.Publisher" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Vouchers" EntityType="Self.Voucher" />
+          <AssociationSet Name="FK_ProductDetail_Author" Association="Self.FK_ProductDetail_Author">
+            <End Role="Author" EntitySet="Authors" />
+            <End Role="ProductDetail" EntitySet="ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Product" Association="Self.FK_ProductDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductDetail" EntitySet="ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Publisher" Association="Self.FK_ProductDetail_Publisher">
+            <End Role="Publisher" EntitySet="Publishers" />
+            <End Role="ProductDetail" EntitySet="ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Supplier" Association="Self.FK_ProductDetail_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="ProductDetail" EntitySet="ProductDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDetail_Voucher" Association="Self.FK_ProductDetail_Voucher">
+            <End Role="Voucher" EntitySet="Vouchers" />
+            <End Role="ProductDetail" EntitySet="ProductDetails" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(dbNhanvanModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(dbNhanvanModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Translators" EntityType="dbNhanvanModel.Translator" />
+          <AssociationSet Name="FK_ProductDetail_Translator" Association="dbNhanvanModel.FK_ProductDetail_Translator">
+            <End Role="Translator" EntitySet="Translators" />
+            <End Role="ProductDetail" EntitySet="ProductDetails" />
+          </AssociationSet>
+          <EntitySet Name="Admins" EntityType="dbNhanvanModel.Admin" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Translator">
+          <Key>
+            <PropertyRef Name="Translator_ID" />
+          </Key>
+          <Property Name="Translator_ID" Type="Int32" Nullable="false" />
+          <Property Name="Translator_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductDetails" Relationship="dbNhanvanModel.FK_ProductDetail_Translator" FromRole="Translator" ToRole="ProductDetail" />
+        </EntityType>
+        <Association Name="FK_ProductDetail_Translator">
+          <End Type="dbNhanvanModel.Translator" Role="Translator" Multiplicity="0..1" />
+          <End Type="dbNhanvanModel.ProductDetail" Role="ProductDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translator">
+              <PropertyRef Name="Translator_ID" />
+            </Principal>
+            <Dependent Role="ProductDetail">
+              <PropertyRef Name="ProDe_TranslatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_Email" />
+          </Key>
+          <Property Name="Admin_Email" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbNhanvanModelStoreContainer" CdmEntityContainer="dbNhanvanEntities">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="dbNhanvanModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Author_ID" ColumnName="Author_ID" />
+                <ScalarProperty Name="Author_Name" ColumnName="Author_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="dbNhanvanModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Product_Image" ColumnName="Product_Image" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Product_NewPrice" ColumnName="Product_NewPrice" />
+                <ScalarProperty Name="Product_OldPrice" ColumnName="Product_OldPrice" />
+                <ScalarProperty Name="Product_Discout" ColumnName="Product_Discout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductDetails">
+            <EntityTypeMapping TypeName="dbNhanvanModel.ProductDetail">
+              <MappingFragment StoreEntitySet="ProductDetail">
+                <ScalarProperty Name="ProDe_TranslatorID" ColumnName="ProDe_TranslatorID" />
+                <ScalarProperty Name="ProDe_ID" ColumnName="ProDe_ID" />
+                <ScalarProperty Name="ProDe_SKU" ColumnName="ProDe_SKU" />
+                <ScalarProperty Name="ProDe_Quantity" ColumnName="ProDe_Quantity" />
+                <ScalarProperty Name="ProDe_Detail" ColumnName="ProDe_Detail" />
+                <ScalarProperty Name="ProDe_Status" ColumnName="ProDe_Status" />
+                <ScalarProperty Name="ProDe_Image" ColumnName="ProDe_Image" />
+                <ScalarProperty Name="ProDe_SoldCount" ColumnName="ProDe_SoldCount" />
+                <ScalarProperty Name="ProDe_CateID" ColumnName="ProDe_CateID" />
+                <ScalarProperty Name="ProDe_SupplierID" ColumnName="ProDe_SupplierID" />
+                <ScalarProperty Name="ProDe_AuthorID" ColumnName="ProDe_AuthorID" />
+                <ScalarProperty Name="ProDe_PublisherID" ColumnName="ProDe_PublisherID" />
+                <ScalarProperty Name="ProDe_VoucherID" ColumnName="ProDe_VoucherID" />
+                <ScalarProperty Name="ProDe_YearOfPublish" ColumnName="ProDe_YearOfPublish" />
+                <ScalarProperty Name="ProDe_Language" ColumnName="ProDe_Language" />
+                <ScalarProperty Name="ProDe_Weight" ColumnName="ProDe_Weight" />
+                <ScalarProperty Name="ProDe_Size" ColumnName="ProDe_Size" />
+                <ScalarProperty Name="ProDe_NumOfPage" ColumnName="ProDe_NumOfPage" />
+                <ScalarProperty Name="ProDe_Form" ColumnName="ProDe_Form" />
+                <ScalarProperty Name="ProDe_ProductID" ColumnName="ProDe_ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publishers">
+            <EntityTypeMapping TypeName="dbNhanvanModel.Publisher">
+              <MappingFragment StoreEntitySet="Publisher">
+                <ScalarProperty Name="Publisher_ID" ColumnName="Publisher_ID" />
+                <ScalarProperty Name="Publisher_Name" ColumnName="Publisher_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="dbNhanvanModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+                <ScalarProperty Name="Supplier_Name" ColumnName="Supplier_Name" />
+                <ScalarProperty Name="Supplier_Email" ColumnName="Supplier_Email" />
+                <ScalarProperty Name="Supplier_Phone" ColumnName="Supplier_Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbNhanvanModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vouchers">
+            <EntityTypeMapping TypeName="dbNhanvanModel.Voucher">
+              <MappingFragment StoreEntitySet="Voucher">
+                <ScalarProperty Name="Voucher_ID" ColumnName="Voucher_ID" />
+                <ScalarProperty Name="Voucher_Name" ColumnName="Voucher_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="dbNhanvanModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="dbNhanvanModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="dbNhanvanModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="dbNhanvanModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbNhanvanModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="dbNhanvanModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbNhanvanModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="dbNhanvanModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="dbNhanvanModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Translators">
+            <EntityTypeMapping TypeName="dbNhanvanModel.Translator">
+              <MappingFragment StoreEntitySet="Translator">
+                <ScalarProperty Name="Translator_Name" ColumnName="Translator_Name" />
+                <ScalarProperty Name="Translator_ID" ColumnName="Translator_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="dbNhanvanModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Admin_Image" ColumnName="Admin_Image" />
+                <ScalarProperty Name="Admin_Phone" ColumnName="Admin_Phone" />
+                <ScalarProperty Name="Admin_Name" ColumnName="Admin_Name" />
+                <ScalarProperty Name="Admin_Password" ColumnName="Admin_Password" />
+                <ScalarProperty Name="Admin_Email" ColumnName="Admin_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
