@@ -14,6 +14,12 @@ namespace DoAn.Models
     
     public partial class ProductDetail
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ProductDetail()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int ProDe_ID { get; set; }
         public string ProDe_SKU { get; set; }
         public Nullable<int> ProDe_Quantity { get; set; }
@@ -36,10 +42,13 @@ namespace DoAn.Models
         public Nullable<int> ProDe_TranslatorID { get; set; }
     
         public virtual Author Author { get; set; }
+        public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
         public virtual Product Product { get; set; }
         public virtual Publisher Publisher { get; set; }
         public virtual Supplier Supplier { get; set; }
-        public virtual Voucher Voucher { get; set; }
         public virtual Translator Translator { get; set; }
+        public virtual Voucher Voucher { get; set; }
     }
 }

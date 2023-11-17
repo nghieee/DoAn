@@ -1,0 +1,104 @@
+﻿@model IEnumerable<DoAn.Models.Order>
+
+@{
+    ViewBag.Title = "Danh sách đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fw-bold"
+            style="float: left;
+                   color: #4e73df;
+                   font-size: 16px">
+            Danh sách đơn hàng
+        </h6>
+        <a href="~/Admin/Order/AddNew"
+           style="float: right;
+                  color: #4e73df">
+            Thêm mới
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th style="width: 50px; text-align: center">ID</th>
+                    <th style="width: 120px; text-align: center">
+                        Ngày đặt hàng
+                    </th>
+                    <th style="width: 120px">
+                        Tên khách hàng
+                    </th>
+                    <th style="width: 120px">
+                        Sản phẩm
+                    </th>
+                    <th style="width: 120px; text-align: center">
+                        Điện thoại
+                    </th>
+                    <th style="width: 200px">
+                        Địa chỉ
+                    </th>
+                    <th style="width: 120px">
+                        Chi tiết đơn hàng
+                    </th>
+                    <th style="width: 100px; text-align: right">
+                        Tổng phụ
+                    </th>
+                    <th style="width: 100px; text-align: right">
+                        Voucher
+                    </th>
+                    <th style="width: 100px; text-align: right">
+                        Tiền ship
+                    </th>
+                    <th style="width: 100px; text-align: right">
+                        Tổng thanh toán
+                    </th>
+                    <th>Thao tác</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align: center">@item.Order_ID</td>
+                        <td style="text-align: center">
+                            @string.Format("{0:dd-MM-yyyy}", item.Order_Date)
+                        </td>
+                        <td>
+                            @item.Customer.Cus_Name 
+                        </td>
+                        <td>
+                            @item.Order_ProDeID
+                        </td>
+                        <td style="text-align: center">
+                            @item.Order_Phone
+                        </td>
+                        <td>
+                            @item.Order_Address
+                        </td>
+                        <td class="form-group">
+                            @item.Order_Detail
+                        </td>
+                        <td style="text-align: right">
+                            @Html.DisplayFor(modelItem => item.Order_SubTotal)
+                        </td>
+                        <td style="text-align: right">
+                            @Html.DisplayFor(modelItem => item.Order_Discount)
+                        </td>
+                        <td style="text-align: right">
+                            @Html.DisplayFor(modelItem => item.Order_ShipFee)
+                        </td>
+                        <td style="text-align: right">
+                            @Html.DisplayFor(modelItem => item.Order_Total)
+                        </td>
+                        <td style="text-align: center">
+                            <a href="~/Admin/Order/Update?Order_ID=@item.Order_ID">Update</a>
+                            <a href="~/Admin/Order/Delete?Order_ID=@item.Order_ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

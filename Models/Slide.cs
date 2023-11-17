@@ -12,12 +12,9 @@ namespace DoAn.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Admin
+    public partial class Slide
     {
-        public string Admin_Email { get; set; }
-        public string Admin_Password { get; set; }
-        public string Admin_Name { get; set; }
-        public string Admin_Phone { get; set; }
-        public string Admin_Image { get; set; }
+        public int Slide_ID { get; set; }
+        public string Slide_URL { get; set; }
     }
 }

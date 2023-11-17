@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DoAn.Models.Category>
+
+@{
+    ViewBag.Title = "Danh sách danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fw-bold"
+            style="float: left;
+                   color: #4e73df;
+                   font-size: 16px">
+            Danh sách danh mục sản phẩm
+        </h6>
+        <a href="~/Admin/Category/AddNew"
+           style="float: right;
+                  color: #4e73df">
+            Thêm mới
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th style="text-align: center">ID</th>
+                    <th>
+                        Tên danh mục
+                    </th>
+                    <th style="text-align: right;">Thao tác</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align: center">@item.Cate_ID</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cate_Name)
+                        </td>
+                        <td style="text-align: right">
+                            <a href="~/Admin/Category/Update?Cate_ID=@item.Cate_ID">Update</a> |
+                            <a href="~/Admin/Category/Delete?Cate_ID=@item.Cate_ID">Delete</a> 
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,4 +1,5 @@
-﻿
+﻿@model DoAn.Models.dbNhanvanEntities
+
 @{
     ViewBag.Title = "TRANG CHỦ";
     Layout = "~/Views/Shared/MasterLayout.cshtml";
@@ -29,18 +30,12 @@
 
                             <!-- The slideshow/carousel -->
                             <div class="carousel-inner">
-                                <div class="carousel-item active" data-bs-interval="2000">
-                                    <img src="~/AppData/Img/ForHome/slideshow_1.png" class="d-block w-100" alt="slide1" />
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="~/AppData/Img/ForHome/slideshow_2.png" class="d-block w-100" alt="slide2" />
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="~/AppData/Img/ForHome/slideshow_3.png" class="d-block w-100" alt="slide3" />
-                                </div>
-                                <div class="carousel-item" data-bs-interval="2000">
-                                    <img src="~/AppData/Img/ForHome/slideshow_4.png" class="d-block w-100" alt="slide4" />
-                                </div>
+                                @foreach (var item in Model.Slides)
+                                {
+                                    <div class="carousel-item active" data-bs-interval="2000">
+                                        <img src="~/AppData/Img/ForHome/@item.Slide_URL)" class="d-block w-100" alt="slide" />
+                                    </div>
+                                }
                             </div>
 
                             <!-- Left and right controls/icons -->
@@ -191,7 +186,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                             <div class="col-2">
                                 <div class="card">
@@ -209,7 +204,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
                             <div class="col-2">
                                 <div class="card">
@@ -227,7 +222,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
                             <div class="col-2">
                                 <div class="card">
@@ -245,7 +240,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
                         </div>
                         <div class="text-center">
@@ -2321,7 +2316,7 @@
                 </div>
             </div>
         </div>
-        
+
     </main>
 
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>

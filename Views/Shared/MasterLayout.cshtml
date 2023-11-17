@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<DoAn.Models.Category>
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -80,7 +81,7 @@
                             <i class="fa-user fa-solid fa-user"></i>
                         </div>
                         <!--<p>Xin chào</p>-->
-                        <a href="@Url.Action("Index", "Login")"'>Đăng nhập</a>
+                        <a href="@Url.Action("Login", "User")">Đăng nhập</a>
                         <span>/</span>
                         <a href="#">Đăng kí</a>
                     </div>
@@ -93,6 +94,12 @@
                             <span>Danh mục</span>
                             <i class="fa-menu fa-solid fa-bars"></i>
                         </div>
+                        <ul class="vertical-navigation">
+                            @*@foreach (var item in Model)
+                            {
+                                <li class="vertical-item"><a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>@item.Cate_Name</a></li>
+                            }*@
+                        </ul>
                     </div>
                     <div class="horizontal-menu">
                         <ul class="menu-nav">

@@ -11,8 +11,9 @@
 <body>
     <header>
         <div class="row">
-            <div class="wrapper">
-                <ul class="col-2 navbar-nav bg-primary-color">
+            <div class="col-2">
+                <ul class="wrapper navbar-nav bg-primary-color"
+                    style="height: 732px; position: sticky; top: 0;">
                     <a href="" class="logo">
                         <img style="margin-left: 12px" src="~/Areas/Admin/Data/Img/hd_page-logo.png" />
                     </a>
@@ -25,28 +26,22 @@
                     </li>
                     <hr class="sidebar-divider my-0">
                     <li class="nav-item p-8">
-                        <a href="#" class="nav-link">
+                        <a href="~/Admin/Category/FindAll" class="nav-link">
                             <i class="fa fa-solid fa-tags fa-beat"></i>
                             <span>Loại sản phẩm</span>
                         </a>
                     </li>
                     <li class="nav-item p-8">
-                        <a href="#" class="nav-link">
+                        <a href="~/Admin/Product/FindAll" class="nav-link">
                             <i class="fa fa-solid fa-tags fa-beat"></i>
                             <span>Sản phẩm</span>
                         </a>
                     </li>
                     <hr class="sidebar-divider my-0">
                     <li class="nav-item p-8">
-                        <a href="#" class="nav-link">
+                        <a href="~/Admin/Order/FindAll" class="nav-link">
                             <i class="fa fa-solid fa-tags fa-beat"></i>
                             <span>Đơn hàng</span>
-                        </a>
-                    </li>
-                    <li class="nav-item p-8">
-                        <a href="#" class="nav-link">
-                            <i class="fa fa-solid fa-tags fa-beat"></i>
-                            <span>Thống kê</span>
                         </a>
                     </li>
                     <hr class="sidebar-divider my-0">
@@ -57,14 +52,28 @@
                         </a>
                     </li>
                     <hr class="sidebar-divider my-0">
+                    <li class="nav-item p-8">
+                        <a href="~/Admin/Customer/FindAll" class="nav-link">
+                            <i class="fa fa-solid fa-tags fa-beat"></i>
+                            <span>Khách hàng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item p-8 pb-3 position-absolute bottom-0">
+                        <hr class="sidebar-divider my-0">
+                        <a href="~/Admin/Customer/FindAll" class="nav-link">
+                            <i class="fa fa-solid fa-tags fa-beat"></i>
+                            <span>Tài khoản</span>
+                        </a>
+                        <hr class="sidebar-divider my-0">
+                    </li>
                 </ul>
             </div>
-            <div class="col-9">
 
+            <div class="col-9 mt-5">
+                @RenderBody()
             </div>
         </div>
     </header>
-    @RenderBody()
 </body>
 </html>
 

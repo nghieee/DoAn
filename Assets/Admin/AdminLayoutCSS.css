@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
     font-family: 'Quicksand';
     src: url(/AppData/Font/Quicksand-Regular.ttf) format('truetype');
 }
@@ -56,7 +56,9 @@ img {
 }
 /*WRAPPER*/
 .wrapper {
+    padding-bottom: 50px;
     padding-left: 15px;
+    height: auto;
 }
 
 .logo {

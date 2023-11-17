@@ -33,7 +33,7 @@ namespace DoAn.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Signin(Admin model)
+        public ActionResult Signin(User model)
         {
             mapAccount map = new mapAccount();
             if (map.AddNew(model) == true)

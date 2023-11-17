@@ -1,0 +1,47 @@
+﻿@model DoAn.Models.Category
+
+@{
+    ViewBag.Title = "Thêm mới danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fw-bold"
+            style="float: left;
+                   color: #4e73df;
+                   font-size: 16px">
+            Thêm mới danh mục sản phẩm
+        </h6>
+        <a href="~/Admin/Category/FindAll"
+           style="float: right;
+                  color: #4e73df">
+            Quay lại
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Tên danh mục sản phẩm: </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Cate_Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Cate_Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 pt-3">
+                            <input type="submit" value="Xác nhận thêm danh mục sản phẩm" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

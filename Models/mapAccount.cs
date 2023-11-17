@@ -9,10 +9,10 @@ namespace DoAn.Models
     public class mapAccount
     {
         dbNhanvanEntities db = new dbNhanvanEntities();
-        public Admin Find(string email, string password)
+        public User Find(string email, string password)
         {
-            var user = db.Admins.Where(m => m.Admin_Email == email &  m.Admin_Password == password).ToList();
-            if (user.Count > 0)
+            var user = db.Users.Where(m => m.User_Email == email &&  m.User_Password == password).ToList();
+            if (user.Count > 0) 
             {
                 return user[0];
             }
@@ -22,9 +22,9 @@ namespace DoAn.Models
             }
         }
 
-        public List<Admin> FindAll()
+        public List<User> FindAll()
         {
-            var users = db.Admins.ToList();
+            var users = db.Users.ToList();
             return users;
         }
 
@@ -43,12 +43,12 @@ namespace DoAn.Models
         //    db.SaveChanges();
         //}
 
-        public bool AddNew(Admin addNew)
+        public bool AddNew(User addNew)
         {
             try
             {
                 //Add đối tượng vào dataset entity
-                db.Admins.Add(addNew);
+                db.Users.Add(addNew);
                 //Lưu vào db
                 db.SaveChanges();
                 return true;

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DoAn.Models.Product>
+
+@{
+    ViewBag.Title = "FindAll";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fw-bold"
+            style="float: left;
+                   color: #4e73df;
+                   font-size: 16px">
+            Danh sách sản phẩm
+        </h6>
+        <a href="~/Admin/Product/AddNew"
+           style="float: right;
+                  color: #4e73df">
+            Thêm mới
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th style="width: 40px; text-align: center">ID</th>
+                    <th style="width: 330px;">
+                        Tên sản phẩm
+                    </th>
+                    <th style="width: 148px; text-align: center">
+                        Hình ảnh sản phẩm
+                    </th>
+                    <th style="width: 128px; text-align: right">
+                        Giá mới
+                    </th>
+                    <th style="width: 128px; text-align: right ">
+                        Giá nhiêm yết
+                    </th>
+                    <th style="width: 128px; text-align: right ">
+                        Khuyến mãi
+                    </th>
+                    <th style="text-align: right">Thao tác</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align: center">
+                            @Html.DisplayFor(modelItem => item.Product_ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Product_Name)
+                        </td>
+                        <td>
+                            @*<img src="@Html.DisplayFor(modelItem => item.Product_Image)" alt="Hong hỉu sao hình lỗi" />*@
+                            <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                        </td>
+                        <td style="text-align: right">
+                            @Html.DisplayFor(modelItem => item.Product_NewPrice)
+                        </td>
+                        <td style="text-align: right">
+                            @Html.DisplayFor(modelItem => item.Product_OldPrice)
+                        </td>
+                        <td style="text-align: right">
+                            @Html.DisplayFor(modelItem => item.Product_Discout)
+                        </td>
+                        <td>
+                            <a href="~/Admin/Product/Update?Product_ID=@item.Product_ID">Update</a> |
+                            <a href="~/Admin/Product/Delete?Product_ID=@item.Product_ID">Delete</a> |
+                            <a href="~/Admin/Product/Detail?Product_ID=@item.Product_ID">Detail</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

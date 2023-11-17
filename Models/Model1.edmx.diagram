@@ -4,22 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9dfa16b2755c48998052f8c2ced1c456" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="dbNhanvanModel.Author" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbNhanvanModel.Product" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+      <Diagram DiagramId="81b1fb48832b4d148c3ea9a115e101a2" Name="Diagram1" ZoomLevel="115">
+        <EntityTypeShape EntityType="dbNhanvanModel.Author" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Category" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Customer" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Order" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Product" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="dbNhanvanModel.ProductDetail" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbNhanvanModel.Publisher" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbNhanvanModel.Supplier" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbNhanvanModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbNhanvanModel.Voucher" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Publisher" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Supplier" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Translator" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.User" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Voucher" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
         <AssociationConnector Association="dbNhanvanModel.FK_ProductDetail_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="dbNhanvanModel.FK_ProductDetail_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="dbNhanvanModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="dbNhanvanModel.FK_Order_ProductDetail" ManuallyRouted="false" />
         <AssociationConnector Association="dbNhanvanModel.FK_ProductDetail_Product" ManuallyRouted="false" />
         <AssociationConnector Association="dbNhanvanModel.FK_ProductDetail_Publisher" ManuallyRouted="false" />
         <AssociationConnector Association="dbNhanvanModel.FK_ProductDetail_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="dbNhanvanModel.FK_ProductDetail_Translator" ManuallyRouted="false" />
         <AssociationConnector Association="dbNhanvanModel.FK_ProductDetail_Voucher" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="dbNhanvanModel.Translator" Width="1.5" PointX="5.375" PointY="3.875" />
-        <AssociationConnector Association="dbNhanvanModel.FK_ProductDetail_Translator" />
-        <EntityTypeShape EntityType="dbNhanvanModel.Admin" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="dbNhanvanModel.Slide" Width="1.5" PointX="5.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
