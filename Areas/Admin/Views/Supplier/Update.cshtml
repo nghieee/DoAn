@@ -1,0 +1,65 @@
+﻿@model DoAn.Models.Supplier
+
+@{
+    ViewBag.Title = "Cập nhật nhà cung cấp";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 fw-bold"
+            style="float: left;
+                   color: #4e73df;
+                   font-size: 16px">
+            Cập nhật các nhà cung cấp
+        </h6>
+        <a href="~/Admin/Supplier/FindAll"
+           style="float: right;
+                  color: #4e73df">
+            Quay lại
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Supplier_ID)
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Tên nhà cung cấp: </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Supplier_Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Supplier_Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">Email nhà cung cấp: </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Supplier_Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Supplier_Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">SĐT nhà cung cấp: </label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Supplier_Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Supplier_Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 pt-3">
+                            <input type="submit" value="Lưu thay đổi" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
