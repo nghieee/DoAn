@@ -12,13 +12,9 @@ namespace DoAn.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Admin
     {
         public string User_Email { get; set; }
         public string User_Password { get; set; }
-        public string User_Name { get; set; }
-        public string User_Phone { get; set; }
-        public string User_Image { get; set; }
-        public string User_Role { get; set; }
     }
 }

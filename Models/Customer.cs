@@ -25,8 +25,9 @@ namespace DoAn.Models
         public Nullable<System.DateTime> Cus_BirthDate { get; set; }
         public string Cus_Address { get; set; }
         public string Cus_Phone { get; set; }
-        public Nullable<double> Cus_Money { get; set; }
         public Nullable<bool> Cus_Status { get; set; }
+        public string Cus_Email { get; set; }
+        public string Cus_Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

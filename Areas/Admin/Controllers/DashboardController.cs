@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DoAn.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,11 @@ namespace DoAn.Areas.Admin.Controllers
         // GET: Admin/Dashboard
         public ActionResult Index()
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
             return View();
         }
     }

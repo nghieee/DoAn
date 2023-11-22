@@ -1,0 +1,99 @@
+﻿@model DoAn.Models.Customer
+
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/CSS/LoginCSS.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/eaf1554704.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="layout-account">
+        <div class="container breadcrumb-shop">
+            <div>
+                <a href="/">
+                    <span>Trang chủ</span>
+                </a>
+                <i class="fa fa-solid fa-angles-right" aria-hidden="true"></i>
+                <span>Tài khoản</span>
+                <i class="fa fa-solid fa-angles-right" aria-hidden="true"></i>
+                <span>Đăng ký</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-6"
+                     style="margin-left: 25%">
+                    <div class="form-account border border-1 mb-5">
+                        <div class="header-page">
+                            <h3>Đăng kỳ tài khoản</h3>
+                        </div>
+                        <div>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-horizontal">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group mb-3"
+                                         style="padding-top: 24px;">
+                                        <label class="control-label">Email đăng nhập: </label>
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.Cus_Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", type="email" } })
+                                            @Html.ValidationMessageFor(model => model.Cus_Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="control-label">Mật khẩu: </label>
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.Cus_Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Mật khẩu", type="password" } })
+                                            @Html.ValidationMessageFor(model => model.Cus_Password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="control-label">Họ và tên: </label>
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.Cus_Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Họ và tên" } })
+                                            @Html.ValidationMessageFor(model => model.Cus_Name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="control-label">Số điện thoại: </label>
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.Cus_Phone, new { htmlAttributes = new { @class = "form-control", placeholder = "SĐT" } })
+                                            @Html.ValidationMessageFor(model => model.Cus_Phone, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="control-label">Ngày sinh: </label>
+                                        <div class="col-md-12">
+                                            @Html.EditorFor(model => model.Cus_BirthDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.Cus_BirthDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Đăng ký" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+

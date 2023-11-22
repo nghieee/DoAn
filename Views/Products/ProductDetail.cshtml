@@ -1,6 +1,6 @@
-﻿@model DoAn.Models.dbNhanvanEntities
+﻿@model DoAn.Models.ProductDetail
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/MasterLayout.cshtml";
 }
 
@@ -13,15 +13,7 @@
     <script src="https://kit.fontawesome.com/eaf1554704.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    @if (Model == null)
-    {
-        <div class="justify-content-center">
-            SẢN PHÂM KHÔNG TỒN TẠI
-        </div>
-    }
-    else
-    {
-        <main>
+    <main>
         <div class="breadcrumb-shop">
             <div class="container">
                 <div class="d-inline-block">
@@ -94,8 +86,8 @@
                                         Thông tin chi tiết
                                     </h3>
                                     <p style="text-align: justify; margin-bottom: 10px">Thông tin sản phẩm</p>
-                                    <table border="1" cellspacing="1" cellpadding="1" 
-                                           style="width: 100%; 
+                                    <table border="1" cellspacing="1" cellpadding="1"
+                                           style="width: 100%;
                                                   border: 1px solid #ddd;
                                                   margin-bottom: 15px;">
                                         <tbody>
@@ -111,7 +103,7 @@
                                                 <td style="text-align:justify">Tác giả</td>
                                                 <td style="text-align:justify">Diêm Hiểu Vũ</td>
                                             </tr>
-                                            @if ()
+
                                             <tr>
                                                 <td style="text-align:justify">Người Dịch</td>
                                                 <td style="text-align:justify">Cầm Xu</td>
@@ -119,7 +111,7 @@
                                             <tr>
                                                 <td style="text-align:justify">NXB</td>
                                                 <td style="text-align:justify">NXB Thế Giới</td>
-                                             </tr>
+                                            </tr>
                                             <tr>
                                                 <td style="text-align:justify">Năm XB</td>
                                                 <td style="text-align:justify">2021</td>
@@ -158,7 +150,7 @@
             </div>
         </div>
     </main>
-    }
+
 </body>
 </html>
 

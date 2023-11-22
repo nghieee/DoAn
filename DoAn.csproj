@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -51,6 +51,9 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -121,11 +124,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -143,6 +141,9 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Author.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -205,9 +206,6 @@
     <Compile Include="Models\Translator.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Voucher.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -220,12 +218,10 @@
     <Content Include="AppData\Img\ForCategory\cả nhà thương nhau.png" />
     <Content Include="AppData\Img\ForHome\0014_7d83923297364fe8853f739fbea9f765_grande.png" />
     <Content Include="AppData\Img\ForHome\86193b493da0e8feb1b1_08281285c4f34203b91f17f3d7221620_grande.png" />
-    <Content Include="AppData\Img\ForHome\8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
     <Content Include="AppData\Img\ForHome\927c462640cf9591ccde_5c286f2dacb946318fe7c53c81cb25d1_grande.png" />
     <Content Include="AppData\Img\ForHome\banner_collection_one.png" />
     <Content Include="AppData\Img\ForHome\banner_right_img1.png" />
     <Content Include="AppData\Img\ForHome\banner_right_img2.png" />
-    <Content Include="AppData\Img\ForHome\bia-ao_chu-dong-trong-the-gioi-bi-dong_final-_1__4b1ccc0b32bc4e88bfa9aa728255c9fa_grande.png" />
     <Content Include="AppData\Img\ForHome\bloc_ca_chep_fbdb5d0d8b244991899fee5df642fdbb_grande.png" />
     <Content Include="AppData\Img\ForHome\brand_index_1.png" />
     <Content Include="AppData\Img\ForHome\brand_index_2.png" />
@@ -238,11 +234,7 @@
     <Content Include="AppData\Img\ForHome\cach-viet-thu-cho-ong-gia-noel_5026d9cf6c854649bf77a89213da3995_grande.png" />
     <Content Include="AppData\Img\ForHome\collection_double_index_1.png" />
     <Content Include="AppData\Img\ForHome\collection_double_index_2.png" />
-    <Content Include="AppData\Img\ForHome\em-g_i-l_-thi_n-th_n-nh_-m_-th_-gi_i-n_y-d_nh-t_ng-cho-t_i-_1__5c06d889e475426e8341b2eca14e7ad9_grande.png" />
-    <Content Include="AppData\Img\ForHome\h_nh-tinh-c_a-m_t-k_-ngh_-nhi_u-tr_c-1-1_b0be8a0db16c444d9e46c4d49ee57409_grande.png" />
     <Content Include="AppData\Img\ForHome\icon-mail.png" />
-    <Content Include="AppData\Img\ForHome\image_188343_92702fab4d3649c49d599dab93cbd1f8_grande.png" />
-    <Content Include="AppData\Img\ForHome\image_188344_e89c54bbc5e748e09f5fb2590a5cda2c_grande.png" />
     <Content Include="AppData\Img\ForHome\lxg_thinh_vuong_e397c63a4765461699bcd9b274116bd5_grande.png" />
     <Content Include="AppData\Img\ForHome\mi-khoai-tay-omachi-special-bo-ham-xot-vang-goi-92g-201912081317547528_72f7943ee4fc4b0fa6e1270872d1b918_grande.png" />
     <Content Include="AppData\Img\ForHome\policy_index_1.png" />
@@ -275,10 +267,15 @@
     <Content Include="AppData\Img\ForMasterLayout\ft_logo-bct.png" />
     <Content Include="AppData\Img\ForMasterLayout\ft_payment.png" />
     <Content Include="AppData\Img\ForMasterLayout\hd_page-logo.png" />
-    <Content Include="AppData\Img\Products\bia-ao_chu-dong-trong-the-gioi-bi-dong_final-_1__4b1ccc0b32bc4e88bfa9aa728255c9fa_master.jpg" />
-    <Content Include="AppData\Img\Products\bia-o-tiem-banh-ngay-mai_1_.png" />
-    <Content Include="AppData\Img\Products\b_a-1_l_y-t_nh-th_m-m_-_i-_u-b_c-600_5e3f18cd30a147e2a78511d8d229714c_grande.png" />
-    <Content Include="AppData\Img\Products\b_a-s_chh_m-nay-th_ng-nh_-r_i-v_-l_ng-ai-600_f443728671454887bbfc87d2776c7028_grande.png" />
+    <Content Include="AppData\Img\Products\Chu-dong-trong-the-gioi-bi-dong.png" />
+    <Content Include="AppData\Img\Products\Dua-tre-hieu-chuyen-thuong-khong-co-keo-an.png" />
+    <Content Include="AppData\Img\Products\Em-gai-la-thien-than-nho.png" />
+    <Content Include="AppData\Img\Products\Hanh-tinh-cua-mot-ke-nghi-nhieu.png" />
+    <Content Include="AppData\Img\Products\Hom-nay-thuong-nho.png" />
+    <Content Include="AppData\Img\Products\Lay-tinh-than-ma-doi-dau-bac.png" />
+    <Content Include="AppData\Img\Products\O-tiem-banh-ngay-mai.png" />
+    <Content Include="AppData\Img\Products\Tet-o-lang-dia-nguc.jpg" />
+    <Content Include="AppData\Img\Products\tham-tu-lung-danh-conan-tap101.png" />
     <Content Include="AppData\Img\Products\toi-co-trieu-chung-cu-yeu-em.png" />
     <Content Include="Areas\Admin\Data\Img\hd_page-logo.png" />
     <Content Include="Areas\Admin\Data\Img\admin-login.png" />
@@ -360,15 +357,6 @@
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\FindAll.cshtml" />
     <Content Include="Areas\Admin\Views\Customer\FindAll.cshtml" />
-    <Content Include="Areas\Admin\Views\Customer\AddNew.cshtml" />
-    <Content Include="Areas\Admin\Views\Order\Update.cshtml" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\Customer\Update.cshtml" />
     <Content Include="Areas\Admin\Views\Product\FindAll.cshtml" />
     <Content Include="Areas\Admin\Views\Product\AddNew.cshtml" />
@@ -380,6 +368,13 @@
     <Content Include="Areas\Admin\Views\Supplier\FindAll.cshtml" />
     <Content Include="Areas\Admin\Views\Supplier\Update.cshtml" />
     <Content Include="Areas\Admin\Views\Supplier\AddNew.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -403,8 +398,9 @@
     <Content Include="Views\Shared\MasterLayout.cshtml" />
     <Content Include="Views\Collections\Lich2024.cshtml" />
     <Content Include="Views\Collections\Page2.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\ProductDetail.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -447,9 +443,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

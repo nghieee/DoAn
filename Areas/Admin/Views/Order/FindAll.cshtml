@@ -13,11 +13,6 @@
                    font-size: 16px">
             Danh sách đơn hàng
         </h6>
-        <a href="~/Admin/Order/AddNew"
-           style="float: right;
-                  color: #4e73df">
-            Thêm mới
-        </a>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -92,7 +87,6 @@
                             @Html.DisplayFor(modelItem => item.Order_Total)
                         </td>
                         <td style="text-align: center">
-                            <a href="~/Admin/Order/Update?Order_ID=@item.Order_ID">Update</a>
                             <a href="~/Admin/Order/Delete?Order_ID=@item.Order_ID">Delete</a>
                         </td>
                     </tr>

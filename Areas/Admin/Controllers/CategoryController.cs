@@ -1,4 +1,5 @@
-﻿using DoAn.Models;
+﻿using DoAn.App_Start;
+using DoAn.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +13,35 @@ namespace DoAn.Areas.Admin.Controllers
         // GET: Admin/Category
         public ActionResult FindAll()
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             var map = new mapCategory();
             return View(map.FindAll());
         }
+
+        //Thêm
         public ActionResult AddNew()
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             return View(new Category());
         }
         [HttpPost]
         public ActionResult AddNew(Category model)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
             var map = new mapCategory();
             var id = map.AddNew(model);
             if (id > 0) return RedirectToAction("FindAll");
@@ -31,9 +51,16 @@ namespace DoAn.Areas.Admin.Controllers
                 return View(model);
             }
         }
-        //Form nhập liệu cập nhật
+
+        //Cập nhật
         public ActionResult Update(int Cate_ID)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             var category = new mapCategory().Detail(Cate_ID);
             return View(category);
         }
@@ -41,6 +68,11 @@ namespace DoAn.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Update(Category model)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
             var map = new mapCategory();
             //Hàm cập nhật: được => true, lỗi => false
             if (map.Update(model) == true)
@@ -52,9 +84,15 @@ namespace DoAn.Areas.Admin.Controllers
                 return View(model);
             }
         }
+
         //Xóa
         public ActionResult Delete(int Cate_ID)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
             var map = new mapCategory();
             map.Delete(Cate_ID);
             return RedirectToAction("FindAll");

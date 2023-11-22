@@ -1,4 +1,4 @@
-﻿@model DoAn.Models.dbNhanvanEntities
+﻿
 
 @{
     ViewBag.Title = "TRANG CHỦ";
@@ -28,14 +28,16 @@
                                 <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
                             </div>
 
-                            <!-- The slideshow/carousel -->
+                            @*//The slideshow/carousel*@
                             <div class="carousel-inner">
-                                @foreach (var item in Model.Slides)
+                                @foreach (var item in new DoAn.Models.mapSlide().FindAll())
                                 {
                                     <div class="carousel-item active" data-bs-interval="2000">
-                                        <img src="~/AppData/Img/ForHome/@item.Slide_URL)" class="d-block w-100" alt="slide" />
+                                        <img src="~/AppData/Img/ForHome/@item.Slide_URL" class="d-block w-100" alt="slide" />
                                     </div>
+
                                 }
+
                             </div>
 
                             <!-- Left and right controls/icons -->
@@ -134,114 +136,40 @@
                     </div>
                     <div class="border border-1 p-15-26">
                         <div class="p-0-16 row">
-                            <div class="col-2">
-                                <div class="card">
-                                    <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
-                                    <div class="card-body">
-                                        <div class="card-detail">
-                                            <div class="card-name">
-                                                <a href="#">
-                                                    <p>Đứa Trẻ Hiểu Chuyện Thường Không Có Kẹo Ăn</p>
-                                                </a>
-                                            </div>
-                                            <div class="card-price">
-                                                <p class="sale-price primary-color">106,560₫</p>
-                                                <span class="old-price">148,000₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <a href="@Url.Action("Index", "Products")">
-                                    <div class="card">
-                                        <img src="~/AppData/Img/ForHome/bia-ao_chu-dong-trong-the-gioi-bi-dong_final-_1__4b1ccc0b32bc4e88bfa9aa728255c9fa_grande.png" />
-                                        <div class="card-body">
-                                            <div class="card-detail">
-                                                <div class="card-name">
-                                                    <p>Chủ Động Trong Thế Giới Bị Động</p>
-                                                </div>
-                                                <div class="card-price">
-                                                    <p class="sale-price primary-color">64,080₫</p>
-                                                    <span class="old-price">89,000₫</span>
+                            @{
+                                int counter = 0;
+
+                                foreach (var item in new DoAn.Models.mapProduct().FindAll())
+                                {
+                                    if (counter < 6)
+                                    {
+                                        <div class="col-2">
+                                            <div class="card">
+                                                <img src="~/AppData/Img/Products/@item.Product_Image" />
+                                                <div class="card-body">
+                                                    <div class="card-detail">
+                                                        <div class="card-name">
+                                                            <a href="@Url.Action("ProductDetail", "Products", new { ProductID = item.Product_ID })">
+                                                                <p>@item.Product_Name</p>
+                                                            </a>
+                                                        </div>
+                                                        <div class="card-price">
+                                                            <p class="sale-price primary-color">@string.Format("{0:#,0}", item.Product_NewPrice)₫</p>
+                                                            <span class="old-price">@string.Format("{0:#,0}", item.Product_OldPrice)₫</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-2">
-                                <div class="card">
-                                    <img src="~/AppData/Img/ForHome/em-g_i-l_-thi_n-th_n-nh_-m_-th_-gi_i-n_y-d_nh-t_ng-cho-t_i-_1__5c06d889e475426e8341b2eca14e7ad9_grande.png" />
-                                    <div class="card-body">
-                                        <div class="card-detail">
-                                            <div class="card-name">
-                                                <a href="#">
-                                                    <p>Em Gái Là Thiên Thần Nhỏ Mà Thế Giới Này Dành Tặng Cho Tôi</p>
-                                                </a>
-                                            </div>
-                                            <div class="card-price">
-                                                <p class="sale-price primary-color">71,280₫</p>
-                                                <span class="old-price">90,000₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="card">
-                                    <img src="~/AppData/Img/ForHome/h_nh-tinh-c_a-m_t-k_-ngh_-nhi_u-tr_c-1-1_b0be8a0db16c444d9e46c4d49ee57409_grande.png" />
-                                    <div class="card-body">
-                                        <div class="card-detail">
-                                            <div class="card-name">
-                                                <a href="#">
-                                                    <p>Hành Tinh Của Một Kẻ Nghĩ Nhiều</p>
-                                                </a>
-                                            </div>
-                                            <div class="card-price">
-                                                <p class="sale-price primary-color">61,920₫</p>
-                                                <span class="old-price">86,000₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="card">
-                                    <img src="~/AppData/Img/ForHome/image_188343_92702fab4d3649c49d599dab93cbd1f8_grande.png" />
-                                    <div class="card-body">
-                                        <div class="card-detail">
-                                            <div class="card-name">
-                                                <a href="#">
-                                                    <p>Luyện viết Tiếng Anh 4/1</p>
-                                                </a>
-                                            </div>
-                                            <div class="card-price">
-                                                <p class="sale-price primary-color">7,000₫</p>
-                                                <span class="old-price">26,000₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="card">
-                                    <img src="~/AppData/Img/ForHome/image_188344_e89c54bbc5e748e09f5fb2590a5cda2c_grande.png" />
-                                    <div class="card-body">
-                                        <div class="card-detail">
-                                            <div class="card-name">
-                                                <a href="#">
-                                                    <p>Luyện viết Tiếng Anh 4/2</p>
-                                                </a>
-                                            </div>
-                                            <div class="card-price">
-                                                <p class="sale-price primary-color">7,000₫</p>
-                                                <span class="old-price">26,000₫</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        counter++;
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+
+                                }
+                            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                         </div>
                         <div class="text-center">
                             <div class="view-more">

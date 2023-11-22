@@ -1,4 +1,5 @@
-﻿using DoAn.Models;
+﻿using DoAn.App_Start;
+using DoAn.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,12 @@ namespace DoAn.Areas.Admin.Controllers
         // GET: Admin/Product
         public ActionResult FindAll()
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             var map = new mapProduct();
             return View(map.FindAll());
         }
@@ -24,6 +31,12 @@ namespace DoAn.Areas.Admin.Controllers
         //Thêm mới
         public ActionResult AddNew()
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             return View(new Product());
         }
         //Hàm lưu thêm 
@@ -42,6 +55,12 @@ namespace DoAn.Areas.Admin.Controllers
         //Form nhập liệu cập nhật
         public ActionResult Update(int Product_ID)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             var product = new mapProduct().Detail(Product_ID);
             return View(product);
         }

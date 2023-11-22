@@ -39,12 +39,12 @@
                                     <input type="email" name="email" class="form-control form-control-user" placeholder="Nhập Email của bạn...">
                                 </div>
                                 <div class="form-group mb-4">
-                                    <input type="password" name="passworđ" class="form-control form-control-user" id="InputPassword" placeholder="Nhập mật khẩu">
+                                    <input type="password" name="password" class="form-control form-control-user" id="InputPassword" placeholder="Nhập mật khẩu">
                                 </div>
-                                <p>
+                                <p style="color: red;">
                                     @ViewBag.erorMessage
                                 </p>
-                                <button type="submit" href="@Url.Action("Index", "Dashboard", new {area = "Admin"})" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
                                     Đăng nhập
                                 </button>
                             </form>
@@ -60,7 +60,7 @@
                             Đăng kí tài khoản miễn phí. Thủ tục đăng kí nhanh chóng và đơn giản.
                             Nó cho phép bạn có thể đặt hàng từ cửa hàng của chúng tôi. Để bắt đầu mua sắm bấm đăng ký.
                         </p>
-                        <button type="submit" href="#" class="btn btn-primary">
+                        <button type="submit" href="@Url.Action("Register", "User")" class="btn btn-primary">
                             Đăng ký
                         </button>
                     </div>

@@ -1,4 +1,5 @@
-﻿using DoAn.Models;
+﻿using DoAn.App_Start;
+using DoAn.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +13,35 @@ namespace DoAn.Areas.Admin.Controllers
         // GET: Admin/Supplier
         public ActionResult FindAll()
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             mapSupplier map = new mapSupplier();
             return View(map.FindAll());
         }
+
         //Thêm mới
         public ActionResult AddNew()
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             return View(new Supplier());
         }
         [HttpPost]
         public ActionResult AddNew(Supplier model)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
             var map = new mapSupplier();
             var id = map.AddNew(model);
             if (id > 0) return RedirectToAction("FindAll");
@@ -32,9 +51,16 @@ namespace DoAn.Areas.Admin.Controllers
                 return View(model);
             }
         }
+
         //Form nhập liệu cập nhật
         public ActionResult Update(int Supplier_ID)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+
             var order = new mapSupplier().Detail(Supplier_ID);
             return View(order);
         }
@@ -42,6 +68,11 @@ namespace DoAn.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Update(Supplier model)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
             var map = new mapSupplier();
             //Hàm cập nhật: được => true, lỗi => false
             if (map.Update(model) == true)
@@ -53,9 +84,15 @@ namespace DoAn.Areas.Admin.Controllers
                 return View(model);
             }
         }
+
         //Xóa
         public ActionResult Delete(int Supplier_ID)
         {
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
             var map = new mapSupplier();
             map.Delete(Supplier_ID);
             return RedirectToAction("FindAll");

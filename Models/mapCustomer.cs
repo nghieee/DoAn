@@ -27,33 +27,37 @@ namespace DoAn.Models
             return list;
         }
 
-        //Thêm mới
-        public int AddNew(Customer model)
+        //Thêm mới/Đăng ký
+        public bool AddNew(Customer model)
         {
-            db.Customers.Add(model);
-            db.SaveChanges();
-            return model.Cus_ID;
+            try
+            {
+                db.Customers.Add(model);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
+
         //Lấy đối tượng theo ID
         public Customer Detail(int Cus_ID)
         {
             return db.Customers.Find(Cus_ID);
         }
-        //Hmaf update
+
+        //Update
         public bool Update(Customer model)
         {
             var cus = db.Customers.Find(model.Cus_ID);
-            cus.Cus_ID = model.Cus_ID;
-            cus.Cus_Name = model.Cus_Name;
-            cus.Cus_Phone = model.Cus_Phone;
-            cus.Cus_Address = model.Cus_Address;
-            cus.Cus_BirthDate = model.Cus_BirthDate;
             cus.Cus_Status = model.Cus_Status;
-            cus.Cus_Money = model.Cus_Money;
             db.SaveChanges();
             return true;
         }
-        //Hàm xóa
+
+        //Xóa
         public void Delete(int Cus_ID)
         {
             var cus = db.Customers.Find(Cus_ID);
