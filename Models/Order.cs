@@ -24,9 +24,9 @@ namespace DoAn.Models
         public Nullable<double> Order_Discount { get; set; }
         public Nullable<double> Order_ShipFee { get; set; }
         public Nullable<double> Order_Total { get; set; }
-        public Nullable<int> Order_ProDeID { get; set; }
+        public Nullable<int> Order_ProductID { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual ProductDetail ProductDetail { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

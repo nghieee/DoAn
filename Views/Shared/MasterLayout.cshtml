@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DoAn.Models.Category>
+﻿
 <!DOCTYPE html>
 
 <html>
@@ -95,10 +95,12 @@
                             <i class="fa-menu fa-solid fa-bars"></i>
                         </div>
                         <ul class="vertical-navigation">
-                            @*@foreach (var item in Model)
+                            @foreach (var item in new DoAn.Models.mapCategory().FindAll())
                             {
-                                <li class="vertical-item"><a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>@item.Cate_Name</a></li>
-                            }*@
+                                <li class="vertical-item">
+                                    <a href="#">@item.Cate_Name</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                     <div class="horizontal-menu">

@@ -210,6 +210,7 @@ header {
     width: 270px;
     display: inline-block;
     float: left;
+    position: relative;
 }
 
     .vertical-menu .title-block {
@@ -229,6 +230,41 @@ header {
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.vertical-navigation {
+    border: 1px solid #ddd;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    border-top: none;
+    display: none;
+    background: #fff;
+    z-index: 99;
+}
+
+.vertical-menu:hover .vertical-navigation {
+    display: block;
+}
+
+.vertical-navigation > li.vertical-item > a {
+    color: #444;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 11px 40px;
+    line-height: 100%;
+    position: relative;
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.vertical-navigation > li.vertical-item > a:hover {
+    color: #ff5800;
+}
+
+.vertical-navigation li.vertical-item:first-child {
+    margin-top: 15px;
 }
 
 .horizontal-menu {

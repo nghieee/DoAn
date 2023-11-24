@@ -10,19 +10,16 @@ namespace DoAn.Controllers
     {
         dbNhanvanEntities db = new dbNhanvanEntities();
         // GET: Products
-        public ActionResult ProductDetail(int ProductID)
+        public ActionResult ProductDetail(int Product_ID)
         {
-            var productDetail = new mapProduct().ViewDetail(ProductID);
-            //ViewBag.productDe = new mapProduct().ViewDetail
+            var product = db.Products.Where(p => p.Product_ID == Product_ID).FirstOrDefault();
 
-            if (productDetail == null)
+            if (product == null)
             {
-                // Xử lý khi không tìm thấy chi tiết sản phẩm
                 return HttpNotFound();
             }
 
-            return View(productDetail);
+            return View(product);
         }
-
     }
 }

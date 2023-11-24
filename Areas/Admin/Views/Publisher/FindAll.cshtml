@@ -1,7 +1,7 @@
-﻿@model IEnumerable<DoAn.Models.Category>
+﻿@model IEnumerable<DoAn.Models.Publisher>
 
 @{
-    ViewBag.Title = "Danh sách tác giả";
+    ViewBag.Title = "Danh sách nhà sản xuất";
     Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
 }
 
@@ -11,9 +11,9 @@
             style="float: left;
                    color: #4e73df;
                    font-size: 16px">
-            Danh sách danh mục sản phẩm
+            Danh sách nhà sản xuất
         </h6>
-        <a href="~/Admin/Category/AddNew"
+        <a href="~/Admin/Publisher/AddNew"
            style="float: right;
                   color: #4e73df">
             Thêm mới
@@ -25,7 +25,7 @@
                 <tr>
                     <th style="text-align: center">ID</th>
                     <th>
-                        Tên danh mục
+                        Tên nhà sản xuất
                     </th>
                     <th style="text-align: right;">Thao tác</th>
                 </tr>
@@ -33,13 +33,13 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td style="text-align: center">@item.Cate_ID</td>
+                        <td style="text-align: center">@item.Publisher_ID</td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Cate_Name)
+                            @Html.DisplayFor(modelItem => item.Publisher_Name)
                         </td>
                         <td style="text-align: right">
-                            <a href="~/Admin/Category/Update?Cate_ID=@item.Cate_ID">Update</a> |
-                            <a href="~/Admin/Category/Delete?Cate_ID=@item.Cate_ID">Delete</a>
+                            <a href="~/Admin/Publisher/Update?Publisher_ID=@item.Publisher_ID">Update</a> |
+                            <a href="~/Admin/Publisher/Delete?Publisher_ID=@item.Publisher_ID">Delete</a>
                         </td>
                     </tr>
                 }
@@ -48,4 +48,3 @@
         </div>
     </div>
 </div>
-

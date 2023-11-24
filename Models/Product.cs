@@ -17,7 +17,7 @@ namespace DoAn.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ProductDetails = new HashSet<ProductDetail>();
+            this.Orders = new HashSet<Order>();
         }
     
         public int Product_ID { get; set; }
@@ -26,8 +26,30 @@ namespace DoAn.Models
         public Nullable<double> Product_OldPrice { get; set; }
         public string Product_Discout { get; set; }
         public string Product_Image { get; set; }
+        public string Product_SKU { get; set; }
+        public Nullable<int> Product_Quantity { get; set; }
+        public string Product_Des { get; set; }
+        public Nullable<int> Product_SoldCount { get; set; }
+        public Nullable<int> Product_CateID { get; set; }
+        public Nullable<int> Product_SupplierID { get; set; }
+        public Nullable<int> Product_AuthorID { get; set; }
+        public Nullable<int> Product_PublisherID { get; set; }
+        public Nullable<int> Product_VoucherID { get; set; }
+        public string Product_YearOfPublish { get; set; }
+        public string Product_Language { get; set; }
+        public Nullable<int> Product_Weight { get; set; }
+        public string Product_Size { get; set; }
+        public Nullable<int> Product_NumOfPage { get; set; }
+        public string Product_Form { get; set; }
+        public Nullable<int> Product_Translator { get; set; }
     
+        public virtual Author Author { get; set; }
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual Publisher Publisher { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual Translator Translator { get; set; }
+        public virtual Voucher Voucher { get; set; }
     }
 }

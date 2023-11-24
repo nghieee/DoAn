@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace DoAn.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class AuthorController : Controller
     {
-        // GET: Admin/Product
+        // GET: Admin/Author
         public ActionResult FindAll()
         {
             var admin = SessionConfig.GetAdmin();
@@ -19,16 +19,11 @@ namespace DoAn.Areas.Admin.Controllers
                 return Redirect("/User/Login");
             }
 
-            var map = new mapProduct();
+            var map = new mapAuthor();
             return View(map.FindAll());
         }
-        ////Xem chi tiết
-        //public ActionResult GetDetail(int Product_ID)
-        //{
-        //    var product = new mapProduct().Detail(Product_ID);
-        //    return View(product);
-        //}
-        //Thêm mới
+
+        //Thêm
         public ActionResult AddNew()
         {
             var admin = SessionConfig.GetAdmin();
@@ -37,13 +32,17 @@ namespace DoAn.Areas.Admin.Controllers
                 return Redirect("/User/Login");
             }
 
-            return View(new Product());
+            return View(new Author());
         }
-        //Hàm lưu thêm 
         [HttpPost]
-        public ActionResult AddNew(Product model)
+        public ActionResult AddNew(Author model)
         {
-            var map = new mapProduct();
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+            var map = new mapAuthor();
             var id = map.AddNew(model);
             if (id > 0) return RedirectToAction("FindAll");
             else
@@ -52,8 +51,9 @@ namespace DoAn.Areas.Admin.Controllers
                 return View(model);
             }
         }
-        //Form nhập liệu cập nhật
-        public ActionResult Update(int Product_ID)
+
+        //Cập nhật
+        public ActionResult Update(int Author_ID)
         {
             var admin = SessionConfig.GetAdmin();
             if (admin == null)
@@ -61,14 +61,19 @@ namespace DoAn.Areas.Admin.Controllers
                 return Redirect("/User/Login");
             }
 
-            var product = new mapProduct().Detail(Product_ID);
-            return View(product);
+            var author = new mapAuthor().Detail(Author_ID);
+            return View(author);
         }
-        //Hàm lưu cập nhật
+        //Hàm lưu
         [HttpPost]
-        public ActionResult Update(Product model)
+        public ActionResult Update(Author model)
         {
-            var map = new mapProduct();
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+            var map = new mapAuthor();
             //Hàm cập nhật: được => true, lỗi => false
             if (map.Update(model) == true)
             {
@@ -79,10 +84,17 @@ namespace DoAn.Areas.Admin.Controllers
                 return View(model);
             }
         }
-        public ActionResult Delete(int Product_ID)
+
+        //Xóa
+        public ActionResult Delete(int Author_ID)
         {
-            var map = new mapProduct();
-            map.Delete(Product_ID);
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+            var map = new mapAuthor();
+            map.Delete(Author_ID);
             return RedirectToAction("FindAll");
         }
     }

@@ -17,13 +17,13 @@ namespace DoAn.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Publisher()
         {
-            this.ProductDetails = new HashSet<ProductDetail>();
+            this.Products = new HashSet<Product>();
         }
     
         public int Publisher_ID { get; set; }
         public string Publisher_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

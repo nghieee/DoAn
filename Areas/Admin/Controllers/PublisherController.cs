@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace DoAn.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class PublisherController : Controller
     {
-        // GET: Admin/Product
+        // GET: Admin/Publisher
         public ActionResult FindAll()
         {
             var admin = SessionConfig.GetAdmin();
@@ -19,15 +19,10 @@ namespace DoAn.Areas.Admin.Controllers
                 return Redirect("/User/Login");
             }
 
-            var map = new mapProduct();
+            mapPublisher map = new mapPublisher();
             return View(map.FindAll());
         }
-        ////Xem chi tiết
-        //public ActionResult GetDetail(int Product_ID)
-        //{
-        //    var product = new mapProduct().Detail(Product_ID);
-        //    return View(product);
-        //}
+
         //Thêm mới
         public ActionResult AddNew()
         {
@@ -37,13 +32,17 @@ namespace DoAn.Areas.Admin.Controllers
                 return Redirect("/User/Login");
             }
 
-            return View(new Product());
+            return View(new Publisher());
         }
-        //Hàm lưu thêm 
         [HttpPost]
-        public ActionResult AddNew(Product model)
+        public ActionResult AddNew(Publisher model)
         {
-            var map = new mapProduct();
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+            var map = new mapPublisher();
             var id = map.AddNew(model);
             if (id > 0) return RedirectToAction("FindAll");
             else
@@ -52,8 +51,9 @@ namespace DoAn.Areas.Admin.Controllers
                 return View(model);
             }
         }
+
         //Form nhập liệu cập nhật
-        public ActionResult Update(int Product_ID)
+        public ActionResult Update(int Publisher_ID)
         {
             var admin = SessionConfig.GetAdmin();
             if (admin == null)
@@ -61,14 +61,19 @@ namespace DoAn.Areas.Admin.Controllers
                 return Redirect("/User/Login");
             }
 
-            var product = new mapProduct().Detail(Product_ID);
-            return View(product);
+            var order = new mapPublisher().Detail(Publisher_ID);
+            return View(order);
         }
-        //Hàm lưu cập nhật
+        //Hàm lưu
         [HttpPost]
-        public ActionResult Update(Product model)
+        public ActionResult Update(Publisher model)
         {
-            var map = new mapProduct();
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+            var map = new mapPublisher();
             //Hàm cập nhật: được => true, lỗi => false
             if (map.Update(model) == true)
             {
@@ -79,10 +84,17 @@ namespace DoAn.Areas.Admin.Controllers
                 return View(model);
             }
         }
-        public ActionResult Delete(int Product_ID)
+
+        //Xóa
+        public ActionResult Delete(int Publisher_ID)
         {
-            var map = new mapProduct();
-            map.Delete(Product_ID);
+            var admin = SessionConfig.GetAdmin();
+            if (admin == null)
+            {
+                return Redirect("/User/Login");
+            }
+            var map = new mapPublisher();
+            map.Delete(Publisher_ID);
             return RedirectToAction("FindAll");
         }
     }

@@ -59,7 +59,8 @@ img {
 
 .product-media .p-sale {
     position: absolute;
-    left: 0;
+    left: 12px;
+    top: 12px;
     background: #FF5800;
     width: 48px;
     height: 30px;

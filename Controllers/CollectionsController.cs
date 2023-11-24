@@ -11,9 +11,8 @@ namespace DoAn.Controllers
     {
         dbNhanvanEntities db = new dbNhanvanEntities();
         // GET: Collections
-        public ActionResult Lich2024()
+        public ActionResult FlashSale()
         {
-            List<Product> ketQua = db.Products.ToList();
             return View();
         }
 

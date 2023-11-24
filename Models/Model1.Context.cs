@@ -33,7 +33,6 @@ namespace DoAn.Models
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductDetail> ProductDetails { get; set; }
         public virtual DbSet<Publisher> Publishers { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }

@@ -148,14 +148,32 @@
                                                 <img src="~/AppData/Img/Products/@item.Product_Image" />
                                                 <div class="card-body">
                                                     <div class="card-detail">
+                                                        @if (item.Product_Discout != null)
+                                                        {
+                                                            <p style="position: absolute;
+                                                           left: 8px;
+                                                           top: 8px;
+                                                           background: #FF5800;
+                                                           width: 48px;
+                                                           height: 30px;
+                                                           text-align: center;
+                                                           line-height: 30px;
+                                                           border-radius: 4px;
+                                                           color: #fff;">
+                                                                @item.Product_Discout
+                                                            </p>
+                                                        }
                                                         <div class="card-name">
-                                                            <a href="@Url.Action("ProductDetail", "Products", new { ProductID = item.Product_ID })">
+                                                            <a href="@Url.Action("ProductDetail", "Products", new { Product_ID = item.Product_ID })">
                                                                 <p>@item.Product_Name</p>
                                                             </a>
                                                         </div>
                                                         <div class="card-price">
                                                             <p class="sale-price primary-color">@string.Format("{0:#,0}", item.Product_NewPrice)₫</p>
-                                                            <span class="old-price">@string.Format("{0:#,0}", item.Product_OldPrice)₫</span>
+                                                            @if (item.Product_OldPrice != null)
+                                                            {
+                                                                <span class="old-price">@string.Format("{0:#,0}", item.Product_OldPrice)₫</span>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>
@@ -169,11 +187,11 @@
                                     }
 
                                 }
-                            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                            }
                         </div>
                         <div class="text-center">
                             <div class="view-more">
-                                <a href="#">Xem thêm</a>
+                                <a href="@Url.Action("FlashSale", "Collections")">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -311,7 +329,7 @@
                         </div>
                         <div class="text-center">
                             <div class="view-more">
-                                <a href="@Url.Action("Lich2024", "Collections")">Xem thêm</a>
+                                <a href="#">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -380,7 +398,7 @@
                             <div class="row row-cols-5 home-collection-row1">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -398,7 +416,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -416,7 +434,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -434,7 +452,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -452,7 +470,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -472,7 +490,7 @@
                             <div class="row row-cols-5 home-collection-row2">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -490,7 +508,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -508,7 +526,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -526,7 +544,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -544,7 +562,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -612,7 +630,7 @@
                             <div class="row row-cols-5 home-collection-row1">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -630,7 +648,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -648,7 +666,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -666,7 +684,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -684,7 +702,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -704,7 +722,7 @@
                             <div class="row row-cols-5 home-collection-row2">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -722,7 +740,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -740,7 +758,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -758,7 +776,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -776,7 +794,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -844,7 +862,7 @@
                             <div class="row row-cols-5 home-collection-row1">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -862,7 +880,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -880,7 +898,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -898,7 +916,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -916,7 +934,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -936,7 +954,7 @@
                             <div class="row row-cols-5 home-collection-row2">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -954,7 +972,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -972,7 +990,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -990,7 +1008,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1008,7 +1026,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1076,7 +1094,7 @@
                             <div class="row row-cols-5 home-collection-row1">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1094,7 +1112,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1112,7 +1130,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1130,7 +1148,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1148,7 +1166,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1168,7 +1186,7 @@
                             <div class="row row-cols-5 home-collection-row2">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1186,7 +1204,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1204,7 +1222,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1222,7 +1240,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1240,7 +1258,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1308,7 +1326,7 @@
                             <div class="row row-cols-5 home-collection-row1">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1326,7 +1344,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1344,7 +1362,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1362,7 +1380,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1380,7 +1398,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1400,7 +1418,7 @@
                             <div class="row row-cols-5 home-collection-row2">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1418,7 +1436,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1436,7 +1454,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1454,7 +1472,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1472,7 +1490,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1540,7 +1558,7 @@
                             <div class="row row-cols-5 home-collection-row1">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1558,7 +1576,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1576,7 +1594,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1594,7 +1612,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1612,7 +1630,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1632,7 +1650,7 @@
                             <div class="row row-cols-5 home-collection-row2">
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1650,7 +1668,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1668,7 +1686,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1686,7 +1704,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">
@@ -1704,7 +1722,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="card">
-                                        <img src="~/AppData/Img/ForHome/8935325011818_5964279db2f341999d807837ba3844fa_grande.png" />
+                                        <img src="~/AppData/Img/Products/Tet-o-lang-dia-nguc.jpg" />
                                         <div class="card-body">
                                             <div class="card-detail">
                                                 <div class="card-name">

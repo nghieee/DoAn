@@ -13,10 +13,7 @@ namespace DoAn.Models
         {
             return db.Products.ToList();
         }
-        public ProductDetail ViewDetail(int Product_ID)
-        {
-            return db.ProductDetails.Find(Product_ID);
-        }
+
         //Thêm mới
         public int AddNew(Product model)
         {
